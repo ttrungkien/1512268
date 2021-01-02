@@ -5,6 +5,41 @@ const userModel = require('../../models/user.model');
 
 const router = express.Router();
 
+router.get('/login', async function (req, res) {
+  const ref = req.headers.referer;
+  req.session.retUrl = ref;
+  
+  res.render('vwAccount/login');
+});
+
+router.post('/login', async function (req, res) {
+  const user = await userModel.singleByUsername(req.body.username);
+  if (user === null) {
+    return res.render('vwAccount/login', {
+      err_message: 'Invalid username or password.'
+    });
+  }
+
+  const ret = bcrypt.compareSync(req.body.password, user.password);
+  if (ret === false) {
+    return res.render('vwAccount/login', {
+      err_message: 'Invalid username or password.'
+    });
+  }
+
+  req.session.isAuth = true;
+  req.session.authUser = user;
+
+  let url = req.query.retUrl || '/';
+  res.redirect(url);
+});
+
+router.post('/logout', async function (req, res) {
+  req.session.isAuth = false;
+  req.session.authUser = null;
+  res.redirect(req.headers.referer);
+});
+
 router.get('/register', async function (req, res) {
   res.render('vwAccount/register');
 });
