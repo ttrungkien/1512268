@@ -1,0 +1,46 @@
+<form action="" method="post">
+  <div class="card shadow w-50 mx-auto">
+    <div class="card-header">
+      Add Account
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <label for="txtUsername">Username</label>
+        <input type="text" class="form-control" id="txtUsername" name="username" autofocus>
+      </div>
+      <div class="form-group">
+        <label for="txtPassword">Password</label>
+        <input type="password" class="form-control" id="txtPassword" name="password">
+      </div>
+      <div class="form-group">
+        <label for="txtConfirm">Confirm</label>
+        <input type="password" class="form-control" id="txtConfirm">
+      </div>
+      <div class="form-group">
+        <label for="txtName">Name</label>
+        <input type="text" class="form-control" id="txtName" name="name">
+      </div>
+      <div class="form-group">
+        <label for="txtEmail">Email</label>
+        <input type="text" class="form-control" id="txtEmail" name="email">
+      </div>
+      <div class="form-group">
+        <label for="txtRole">Role</label>
+        <select class="form-control" name="role" id="txtRole">
+          <option value="STUDENT">STUDENT</option>
+          <option value="LECTURER">LECTURER</option>
+        </select>
+      </div>
+    </div>
+    <div class="card-footer text-muted">
+      <a class="btn btn-primary" href="/admin/user" role="button">
+        <i class="fa fa-backward" aria-hidden="true"></i>
+        Back to List
+      </a>
+      <button type="submit" class="btn btn-outline-success">
+        <i class="fa fa-check" aria-hidden="true"></i>
+        Save
+      </button>
+    </div>
+  </div>
+</form>

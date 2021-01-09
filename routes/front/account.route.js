@@ -51,7 +51,7 @@ router.post('/register', async function (req, res) {
     password: hash,
     name: req.body.name,
     email: req.body.email,
-    role: 'STUDENT',
+    role: req.body.role || 'STUDENT',
   };
 
   await userModel.add(user);
@@ -65,7 +65,7 @@ router.get('/is-available', async function (req, res) {
     return res.json(true);
   }
 
-  return res.json(false)
+  return res.json(false);
 })
 
 module.exports = router;

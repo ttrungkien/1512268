@@ -27,5 +27,16 @@ module.exports = {
 
   add(entity) {
     return db.add(entity, TBL_USERS);
-  }
+  },
+
+  del(entity) {
+    const condition = { id: entity.id };
+    return db.del(condition, TBL_USERS);
+  },
+
+  patch(entity) {
+    const condition = { id: entity.id };
+    delete entity.id;
+    return db.patch(entity, condition, TBL_USERS);
+  },
 }
