@@ -1,0 +1,46 @@
+<div class="card">
+  <div class="card-header">
+    Course
+    <a class="btn btn-sm btn-outline-success" href="/admin/course/add" role="button">
+      <i class="fa fa-plus" aria-hidden="true"></i>
+      Add
+    </a>
+  </div>
+  <div class="card-body">
+    <table class="table table-striped table-inverse table-responsive">
+      <thead class="thead-inverse">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Category ID</th>
+          <th>Lecturer ID</th>
+          <th>Price</th>
+          <th>Brief content</th>
+          <th>Detailed content</th>
+          <th>Updated at</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+          {{#each courseList}}
+            <tr>
+              <td scope="row">{{id}}</td>
+              <td>{{name}}</td>
+              <td>{{categoryId}}</td>
+              <td>{{userId}}</td>
+              <td>{{price}}</td>
+              <td>{{briefContent}}</td>
+              <td>{{detailedContent}}</td>
+              <td>{{updatedAt}}</td>
+              <td>
+                <a class="btn btn-sm btn-outline-primary" href="/admin/course/detail/{{id}}" role="button">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                  Edit
+                </a>
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+    </table>
+  </div>
+</div>

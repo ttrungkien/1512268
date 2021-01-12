@@ -1,0 +1,65 @@
+<form action="" method="post">
+  <div class="card shadow w-50 mx-auto">
+    <div class="card-header">
+      Edit Course
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <label for="txtID">ID</label>
+        <input type="text" class="form-control" id="txtID" name="id" value="{{this.course.id}}" readonly>
+      </div>
+      <div class="form-group">
+        <label for="txtName">Name</label>
+        <input type="text" class="form-control" id="txtName" name="name" value="{{this.course.name}}" autofocus>
+      </div>
+      <div class="form-group">
+        <label for="txtCategoryID">Category ID</label>
+        <select class="form-control" name="categoryId" id="txtCategoryID" disabled>
+          {{#each categoryList}}
+            <option value=""></option>
+            <option value={{id}}>{{name}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="txtLecturerID">Lecturer ID</label>
+        <select class="form-control" name="userId" id="txtLecturerID" disabled>
+          {{#each lecturerList}}
+            <option value=""></option>
+            <option value={{id}}>{{name}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="numPrice">Price</label>
+        <input type="number" class="form-control" id="numPrice" name="price" value="{{this.course.price}}" min="0">
+      </div>
+      <div class="form-group">
+        <label for="txtBriefContent">Brief content</label>
+        <textarea class="form-control" id="txtBriefContent" name="briefContent" rows="4" cols="50">
+          {{this.course.briefContent}}
+        </textarea>
+      </div>
+      <div class="form-group">
+        <label for="txtDetailedContent">Detailed content</label>
+        <textarea class="form-control" id="txtDetailedContent" name="detailedContent" rows="4" cols="50">
+          {{this.course.detailedContent}}
+        </textarea>
+      </div>
+    </div>
+    <div class="card-footer text-muted">
+      <a class="btn btn-primary" href="/admin/course" role="button">
+        <i class="fa fa-backward" aria-hidden="true"></i>
+        Back to List
+      </a>
+      <button type="submit" class="btn btn-outline-danger" formaction="/admin/course/del">
+        <i class="fa fa-trash-o" aria-hidden="true"></i>
+        Delete
+      </button>
+      <button type="submit" class="btn btn-outline-success" formaction="/admin/course/patch">
+        <i class="fa fa-check" aria-hidden="true"></i>
+        Save
+      </button>
+    </div>
+  </div>
+</form>

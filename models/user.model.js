@@ -7,6 +7,11 @@ module.exports = {
     return db.load(`select * from ${TBL_USERS}`);
   },
 
+  async lecturers() {
+    const rows = await db.load(`select * from ${TBL_USERS} where role = 'LECTURER'`);
+    return rows;
+  },
+
   async single(id) {
     const rows = await db.load(`select * from ${TBL_USERS} where id = ${id}`);
     if (rows.length === 0) {
