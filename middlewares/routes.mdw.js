@@ -5,4 +5,5 @@ module.exports = function(app) {
   app.use('/admin/category', require('../routes/category.route'));
   app.use('/admin/course', require('../routes/course.route'));
   app.use('/admin', require('../routes/home.route'));
+  app.use('/', require('../routes/front/home.route'));
 };
