@@ -2,6 +2,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 
 const userModel = require('../../models/user.model');
+const auth = require('../../middlewares/auth.mdw');
 
 const router = express.Router();
 
@@ -67,5 +68,22 @@ router.get('/is-available', async function (req, res) {
 
   return res.json(false);
 })
+
+router.get('/profile', auth, async function (req, res) {
+  res.render('vwAccount/profile');
+});
+
+router.get('/edit', auth, async function (req, res) {
+  res.render('vwAccount/edit');
+});
+
+router.post('/edit', auth, async function (req, res) {
+  const ret = await userModel.patch(req.body);
+
+  const user = await userModel.single(req.session.authUser.id);
+  req.session.authUser = user;
+
+  res.redirect('/account/profile');
+});
 
 module.exports = router;

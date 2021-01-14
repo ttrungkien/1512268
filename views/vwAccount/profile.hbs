@@ -1,0 +1,40 @@
+<div class="card">
+  <div class="card-header">
+    Profile
+    <a class="btn btn-sm btn-outline-primary" href="/account/edit" role="button">
+      <i class="fa fa-pencil" aria-hidden="true"></i>
+      Edit
+    </a>
+  </div>
+  
+  <div class="card-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          Name
+        </div>
+        <div class="col-sm">
+          {{authUser.name}}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm">
+          Email
+        </div>
+        <div class="col-sm">
+          {{authUser.email}}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm">
+          Role
+        </div>
+        <div class="col-sm">
+          {{authUser.role}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
