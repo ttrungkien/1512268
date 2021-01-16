@@ -13,7 +13,7 @@ module.exports = {
   },
 
   async single(id) {
-    const rows = await db.load(`select * from ${TBL_USERS} where id = ${id}`);
+    const rows = await db.load(`select * from ${TBL_USERS} where id = '${id}'`);
     if (rows.length === 0) {
       return null;
     }
@@ -22,7 +22,7 @@ module.exports = {
   },
 
   async singleByUsername(username) {
-    const rows = await db.load(`select * from ${TBL_USERS} where username = ${username}`);
+    const rows = await db.load(`select * from ${TBL_USERS} where username = '${username}'`);
     if (rows.length === 0) {
       return null;
     }

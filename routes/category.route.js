@@ -38,6 +38,9 @@ router.get('/add', auth, async function (req, res) {
 });
 
 router.post('/add', auth, async function (req, res) {
+  if (req.body.parentId === '') {
+    delete req.body.parentId;
+  }
   const ret = await categoryModel.add(req.body);
   res.redirect('/admin/category');
 });

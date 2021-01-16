@@ -1,0 +1,25 @@
+<!-- Navbar (sit on top) -->
+<div class="w3-top" style="z-index: 2;">
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card" style="overflow:unset">
+    <a href="/" class="w3-bar-item w3-button"><b>LOGO</b></a>
+    <!-- Float links to the right. Hide them on small screens -->
+    {{#if isAuth}}
+    <form id="frmLogout" method="POST" action="/account/logout"></form>
+    <div class="dropdown w3-right w3-hide-small">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fa fa-user" aria-hidden="true"></i>
+        Welcome, <b>{{authUser.name}}</b>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="/account/profile">Profile</a>
+        <a class="dropdown-item" href="javascript: $('#frmLogout').submit()">Logout</a>
+      </div>
+    </div>
+    {{else}}
+    <div class="w3-right w3-hide-small">
+      <a href="/account/register" class="w3-bar-item w3-button">Signup</a>
+      <a href="/account/login" class="w3-bar-item w3-button">Login</a>
+    </div>
+    {{/if}}
+  </div>
+</div>
