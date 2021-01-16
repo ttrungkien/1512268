@@ -86,4 +86,31 @@ router.post('/edit', auth, async function (req, res) {
   res.redirect('/account/profile');
 });
 
+router.get('/change-password', auth, async function (req, res) {
+  res.render('vwAccount/change-password');
+});
+
+router.post('/change-password', auth, async function (req, res) {
+  const user = await userModel.single(req.body.id);
+  const ret = bcrypt.compareSync(req.body.oldPassword, user.password);
+  if (ret === false) {
+    return res.render('vwAccount/change-password', {
+      err_message: 'Invalid old password.'
+    });
+  }
+
+  const hash = bcrypt.hashSync(req.body.newPassword, 10);
+  const entity = {
+    id: req.body.id,
+    password: hash,
+  };
+
+  await userModel.patch(entity);
+
+  req.session.isAuth = false;
+  req.session.authUser = null;
+
+  res.redirect('/account/login');
+});
+
 module.exports = router;
