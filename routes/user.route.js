@@ -14,7 +14,7 @@ router.get('/', auth, async function (req, res) {
   });
 });
 
-router.get('/:id', auth, async function (req, res) {
+router.get('/edit/:id', auth, async function (req, res) {
   const id = req.params.id;
   const user = await userModel.single(id);
   if (user === null) {
