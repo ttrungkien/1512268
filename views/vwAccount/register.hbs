@@ -5,11 +5,18 @@
 
     const username = $('#txtUsername').val();
     if (username.length === 0) {
-      alert('Invalid data');
+      alert('Invalid usename');
+    }
+
+    const password = $('#txtPassword').val();
+    const confirm = $('#txtConfirm').val();
+    if (password !== confirm) {
+      alert('Password and confirm password are not match');
     }
 
     $.getJSON(`/account/is-available?user=${username}`, function(data) {
       if (data === true) {
+        //alert('User has already existed');
         $('#frmRegister').off('submit').submit();
       }
     });
@@ -43,6 +50,7 @@
           <label for="txtEmail">Email</label>
           <input type="text" class="form-control" id="txtEmail" name="email">
         </div>
+        <p class="text-danger">{{err_message}}</p>
     </div>
     <div class="card-footer text-muted">
       <button type="submit" class="btn btn-outline-success">
